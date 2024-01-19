@@ -56,7 +56,7 @@ int main(int argc, const char **argv, const char **envp)
 
 - Thanks to https://projects.jason-rush.com/tools/buffer-overflow-eip-offset-string-generator/ , we managed to find the offset of the return address by provoking a segfault with gdb. This offset is 80 bytes.
 
-- So all we had to do was give "dat_wil" as `argv[1]` and a shellcode followed by the necessary amount of random bytes to reach the offset of 80, followed by the address of our string buffer as `argv[2]`.
+- So all we had to do was give "dat_wil" as username and a shellcode followed by the necessary amount of random bytes to reach the offset of 80, followed by the address of our string buffer as password.
 ## Exploit
 
 ```
